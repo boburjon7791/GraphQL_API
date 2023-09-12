@@ -1,7 +1,6 @@
 package com.example.demo.dtos.user;
 
 import com.example.demo.dtos.todo.TodoGetDto;
-import com.example.demo.entities.Todo;
 import lombok.*;
 
 import java.util.List;
