@@ -1,0 +1,100 @@
+type Mutation{
+    createUser(dto:UserCreateDto):UserGetDto
+    updateUser(dto:UserUpdateDto):UserGetDto
+    deleteUser(id:Int):Boolean
+    createTodo(dto:TodoCreateDto):TodoGetDto
+    updateTodo(dto:TodoUpdateDto):TodoGetDto
+    deleteTodo(id:Int):Boolean
+}
+type Query{
+    getUser(id:Int):UserGetDto
+    getTodo(id:Int):TodoGetDto
+    getUsers:[UserGetDto]
+    getTodos:[TodoGetDto]
+    getTodosByLevel(level:Level):[TodoGetDto]
+    getTodosByCategory(category:Category):[TodoGetDto]
+    getTodosByDate(date1:LocalDateInput,date2:LocalDateInput):[TodoGetDto]
+}
+enum Category {
+    ENTERTAINMENT
+    STUDY
+    WORK
+}
+
+enum Level {
+    LOW
+    MEDIUM
+    HIGH
+}
+
+type LocalDate {
+    year: Int
+    month: Int
+    day: Int
+}
+
+type TodoGetDto {
+    id: ID!
+    title: String
+    description: String
+    category: Category
+    level: Level
+    deadLine: LocalDate
+    completed: Boolean
+    userId: Int
+}
+
+type UserGetDto {
+    id: ID!
+    fullName: String
+    email: String
+    password: String
+    todos: [TodoGetDto]
+}
+
+input LocalDateInput {
+    year: Int
+    month: Int
+    day: Int
+}
+
+input TodoInputDto {
+    id: ID!
+    title: String
+    description: String
+    category: Category
+    level: Level
+    deadLine: LocalDateInput
+    completed: Boolean
+    userId:Int
+}
+input TodoCreateDto{
+    title:String
+    description:String
+    category:Category
+    level:Level
+    deadLine:LocalDateInput
+    userId:Int
+}
+input TodoUpdateDto{
+    id:ID!
+    title:String
+    description:String
+    category:Category
+    level:Level
+    deadLine:LocalDateInput
+    completed:Boolean
+}
+input UserCreateDto {
+    fullName:String
+    email:String
+    password:String
+}
+
+input UserUpdateDto {
+    id:ID!
+    fullName:String
+    email:String
+    password:String
+    todos:[TodoInputDto]
+}
