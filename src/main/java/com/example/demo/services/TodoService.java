@@ -4,7 +4,6 @@ import com.example.demo.dtos.todo.LocalDate;
 import com.example.demo.dtos.todo.TodoCreateDto;
 import com.example.demo.dtos.todo.TodoGetDto;
 import com.example.demo.dtos.todo.TodoUpdateDto;
-import com.example.demo.dtos.user.UserGetDto;
 import com.example.demo.enums.Category;
 import com.example.demo.enums.Level;
 import lombok.NonNull;
